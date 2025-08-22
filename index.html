@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>For my soul🩶</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: linear-gradient(to bottom, #000000, #555555);
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      color: #fff;
+      margin: 0;
+      padding: 40px 20px;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    #contador {
+      font-size: 1.5em;
+      margin: 20px 0;
+    }
+
+    .carrusel {
+      margin-top: 30px;
+      position: relative;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .slide {
+      display: none;
+    }
+
+    .slide img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+
+    .texto {
+      margin-top: 10px;
+      font-size: 1.2em;
+      background: rgba(255,255,255,0.1);
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .botones {
+      margin-top: 15px;
+    }
+
+    .botones button {
+      background: #fff;
+      color: #e75480;
+      border: none;
+      padding: 8px 15px;
+      font-size: 1em;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin: 0 5px;
+    }
+
+    .botones button:hover {
+      background: #e75480;
+      color: #fff;
+    }
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 2em;
+      }
+      #contador {
+        font-size: 1.2em;
+      }
+      .texto {
+        font-size: 1em;
+      }
+      .botones button {
+        padding: 6px 12px;
+        font-size: 0.9em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1> 🩶Para ti, mi alma🩶 </h1>
+
+  <!-- Contador -->
+  <div id="contador" style="display:none;"></div>
+
+  <!-- Botón de inicio -->
+  <button id="inicioBtn" onclick="mostrarCarrusel()" style="margin-top:30px; padding:12px 25px; font-size:1.2em; border-radius:20px; cursor:pointer; background:#fff; color:#e75480; border:none; transition:0.3s;">
+    Picale, dale clicksito🩶
+  </button>
+
+  <!-- Carrusel -->
+  <div class="carrusel" id="carrusel" style="display:none;">
+    <div class="slide active">
+      <img src="juntas1.jpg" alt="Foto 1">
+      <div class="texto">Nuestra primera foto juntas 💕</div>
+    </div>
+    <div class="slide">
+      <img src="manos1.jpg" alt="Foto 2">
+      <div class="texto">Una de las primeras veces que nos agarramos las manos😭💗 </div>
+    </div>
+    <div class="slide">
+      <img src="roblox1.jpg" alt="Foto 3">
+      <div class="texto">Nuestra primera vez en robloxito🩶 </div>
+    </div>
+    <div class="slide">
+      <img src="mes1.jpg" alt="Foto 3">
+      <div class="texto">Nuestro primer mesesitoo😭💗🩶 </div>
+    </div>
+    <div class="slide">
+      <img src="ojos1.jpg" alt="Foto 3">
+      <div class="texto">Simplemente tus ojos hermosos que adoro ver✨💗 </div>
+    </div>
+    <div class="slide">
+      <img src="us.jpg" alt="Foto 3">
+      <div class="texto">Just you(G) and(+) me(K)🩶G+K🩶 </div>
+    </div>
+
+    <div class="botones">
+      <button onclick="cambiarSlide(-1)">⟵ Atrás</button>
+      <button onclick="cambiarSlide(1)">Adelante ⟶</button>
+    </div>
+  </div>
+
+  <script>
+    const fechaInicio = new Date("2025-02-12"); 
+    const hoy = new Date();
+
+    const diferencia = Math.floor((hoy - fechaInicio) / (1000 * 60 * 60 * 24));
+    const opciones = { day: "numeric", month: "long", year: "numeric" };
+    const fechaTexto = hoy.toLocaleDateString("es-ES", opciones);
+
+    document.getElementById("contador").innerText = 
+      `Hoy dia ${fechaTexto} y llevamos ${diferencia} días juntas 💗`;
+
+    let indice = 0;
+
+    
+   function mostrarCarrusel() {
+  document.getElementById("inicioBtn").style.display = "none"; 
+
+  const contador = document.getElementById("contador");
+  contador.style.display = "block";
+  contador.innerText = `Hoy dia ${fechaTexto} aunque parezcan pocos llevamos ${diferencia} hermosos  días juntas, puedes creerlo linda?😭💗
+Mira`;
+
+  const carrusel = document.getElementById("carrusel");
+  carrusel.style.display = "block"; 
+  mostrarSlide(indice);
+    }
+
+    function cambiarSlide(n) {
+      mostrarSlide(indice += n);
+    }
+
+    function mostrarSlide(n) {
+      const slides = document.getElementsByClassName("slide");
+      if (n >= slides.length) { indice = 0; }
+      if (n < 0) { indice = slides.length - 1; }
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slides[indice].style.display = "block";
+    }
+  </script>
+
+   </body>
+</html>
